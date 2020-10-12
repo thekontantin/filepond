@@ -1,0 +1,421 @@
+
+
+    <div class="container mt-5 mb-5">
+
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+        <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+
+        <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+        <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+              rel="stylesheet">
+
+
+        <!-- new -->
+
+        <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+        <link href="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.css" rel="stylesheet">
+
+        <!-- add before </body> -->
+        <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
+
+
+        <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+        <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+              rel="stylesheet">
+
+        <!-- add before </body> -->
+        <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+        <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+
+        
+
+        <div>
+            {% csrf_token %}
+            <div class="row">
+                <div class="card col-lg-6 col-sm-5 ml-2 mr-2">
+                    <div class="card-header bg-danger text-white">
+                        <h3 style='text-align: center;'>Əlaqə</h3>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                            <div class='form-customized-div'>
+                                <label for="validationTextarea">{{ joint_form.related_person.label }}</label>
+                            </div>
+                            <div class='form-customized-div'>
+                                {{ joint_form.related_person }}
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class='form-customized-div'>
+                                <label for="validationTextarea">{{ joint_form.phone_number.label }}</label>
+                            </div>
+                            <div class='form-customized-div'>
+                                {{ joint_form.phone_number }}
+                            </div>
+                        </div>
+                    </div>
+                    {% if request.user.is_authenticated %}
+                    {% else %}
+                        <div class="row email">
+                            <div class="col-lg-12 col-sm-12">
+                                <div class='form-customized-div'>
+                                    <label for="validationTextarea">{{ joint_form.email.label }}</label>
+                                </div>
+                                <div class='form-customized-div'>
+                                    {{ joint_form.email }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+
+                    <div class="row">
+                        <div class="col">
+                            <div class='form-customized-div'>
+                                {{ joint_form.billboard_type.label }}
+                            </div>
+                            <div class='form-customized-div'>
+                                {{ joint_form.billboard_type }}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class='form-customized-div'>
+                                {{ joint_form.property_type.label }}
+                            </div>
+                            <div class='form-customized-div'>
+                                {{ joint_form.property_type }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='form-customized-div'>
+                        {{ joint_form.posted_by_owner_or_agent.label }}
+                    </div>
+                    <div class='form-customized-div'>
+                        {{ joint_form.posted_by_owner_or_agent }}
+                    </div>
+                    <div class="row create_attempt">
+                        <a href='#next' id='create_attempt' style='margin:10px; margin-left: 18px;' type=""
+                           class='smooth-goto btn btn-lg btn-outline-danger create_attempt'>Davam et</a>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="container mt-5 mb-5 next" id='next'>
+            <div class="row">
+                <div class="card col-lg-6 col-sm-5 ml-2 mr-2">
+                    <div class="card-header bg-danger text-white">
+                        <h3 style='text-align: center;'>Elan</h3>
+                    </div>
+
+                    <div class='col-md-12'>
+                        <label>Şəhər</label>
+                    </div>
+
+
+                    <div class='form-customized-div city_form mob' id='city_form'>
+                        {{ joint_form.city }}
+                    </div>
+
+
+                    <div class='borough-label borough_form mob '>
+                        {{ joint_form.borough.label }}
+                    </div>
+
+                    <div class='form-customized-div mob'>
+                        {{ joint_form.borough }}
+                    </div>
+
+
+                    <div class='district-label mob district_form' id='district_form'>
+                        {{ joint_form.district.label }}
+                    </div>
+
+                    <div class='form-customized-div mob'>
+                        {{ joint_form.district }}
+                    </div>
+
+
+                    <div class='address-label address_form_label'>
+                        {{ joint_form.address.label }}
+                    </div>
+
+                    <div class='form-customized-div mob'>
+                        {{ joint_form.address }}
+                    </div>
+
+
+                    <div class='floor-label floor_form mob'>
+                        {{ joint_form.floor.label }}
+                    </div>
+
+                    <div class='form-customized-div mob'>
+                        {{ joint_form.floor }}
+                    </div>
+
+
+                    <div class='apartment-label floor_apartment mob'>
+                        {{ joint_form.floor_apartment.label }}
+                    </div>
+
+                    <div class='form-customized-div mob'>
+                        {{ joint_form.floor_apartment }}
+                    </div>
+
+
+                    <div class='kvm-label size_form mob'>
+                        {{ joint_form.size.label }}
+                    </div>
+
+                    <div class='form-customized-div mob'>
+                        {{ joint_form.size }}
+                    </div>
+
+
+                    <div class='kos-label size_so_form mob'>
+                        {{ joint_form.size_sot.label }}
+                    </div>
+
+                    <div class='form-customized-div mob'>
+                        {{ joint_form.size_sot }}
+                    </div>
+
+
+                    <div class='room-label room_form mob'>
+                        {{ joint_form.rooms.label }}
+                    </div>
+
+                    <div class='form-customized-div mob'>
+                        {{ joint_form.rooms }}
+                    </div>
+
+
+                    <div class='description-label'>
+                        {{ joint_form.description.label }}
+                    </div>
+
+                    <div class='form-customized-div mob'>
+                        {{ joint_form.description }}
+                    </div>
+
+
+                    <div class='form-customized-div mob'>
+                        {{ joint_form.price.label }}
+                    </div>
+
+                    <div class='form-customized-div mob'>
+                        {{ joint_form.price }}
+                    </div>
+
+
+                    <div class='form-customized-div price_daily'>
+                        {{ joint_form.monthly_or_daily }}
+                    </div>
+
+
+                    
+                    <div class="izle">
+                        <div class="row sortable"></div>
+                    </div>
+
+                   
+
+                    <input type="file" multiple name="photos" data-allow-reorder="true" accept="image/png, image/jpeg">
+
+
+                    <div class="col">
+                        <div class='form-customized-div'>
+                            {{ joint_form.document_type.label }}
+                        </div>
+                        <div class='form-customized-div'>
+                            {{ joint_form.document_type }}
+                        </div>
+                    </div>
+
+                    
+                    <div class="col-md-12">
+                        <label>Xəritədə göstər</label>
+                    </div>
+
+                    <div class="col" disabled>
+                        {% include 'map.html' %}
+                    </div>
+
+                    <input type="text" id='lng' name='lng' placeholder="" value="" hidden>
+                    <input type="text" id='lat' name='lat' placeholder="" value="" hidden>
+
+                    <input type="text" id='length' name='length' placeholder="" value="" hidden>
+
+                    <!-- <input placeholder="Şəkilləri seçin" id="img" style='margin-top: 20px;' type="file" name="images" multiple>  -->
+
+
+                    <button type="submit" id='saveBtn' disabled class="btn btn-danger submit-bt btn-lg mt-2 mb-2">Elanı
+                        təsdiq et
+                    </button>
+
+                    <style>
+                        .filepond--item {
+                            width: 200px;
+                            height: 200px;
+                        }
+
+                        .filepond--root label {
+                            font-size: 2rem;
+                        }
+
+
+                        @media screen and (max-width: 700px) {
+                            .filepond--item {
+                                max-width: 45%;
+                                height: auto;
+                            }
+                        }
+                    </style>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                                FilePond.registerPlugin(
+                                    FilePondPluginImagePreview,
+                                    FilePondPluginImageExifOrientation,
+                                    FilePondPluginFileValidateSize,
+                                    FilePondPluginImageCrop,
+                                    FilePondPluginImageResize,
+                                    FilePondPluginFileValidateType
+                                );
+                            }
+                        )
+                    </script>
+                    <script>
+
+
+                        document.addEventListener('DOMContentLoaded', function () {
+                            var files = []
+                            FilePond.registerPlugin(FilePondPluginImagePreview,
+                                FilePondPluginImageExifOrientation,
+                                FilePondPluginImageValidateSize,
+                                FilePondPluginFileValidateType
+                            );
+
+                            const inputElement = document.querySelector('input[name="photos"]');
+
+                            const pond = FilePond.create(inputElement, {
+                                acceptedFileTypes: ['image/png', 'image/jpeg', 'image/jpg'],
+                                labelIdle: "Şəkil əlavə etmək",
+                                onaddfile: (err, fileItem) => {
+                                    if (!err) {
+                                        files.push(fileItem.file)
+                                    }
+                                    console.log(files)
+                                },
+                                onremovefile: (err, fileItem) => {
+                                    const index = files.indexOf(fileItem.file)
+                                    if (index > -1) {
+                                        files.splice(index, 1)
+                                    }
+                                    console.log(files)
+                                },
+
+
+                            });
+
+                            var formData = new FormData();
+                            $(document).on('click', '#saveBtn', function (e) {
+                                formData.append('length', files.length)
+                                formData.append('billboard_type', $('#billboard_type').val())
+                                formData.append('related_person', $('#related_person').val())
+                                formData.append('phone_number', $('#phone_number').val())
+                                formData.append('email', $('#email').val())
+                                formData.append('billboard_type', $('#billboard_type').val())
+                                formData.append('property_type', $('#property_type').val())
+                                formData.append('document_type', $('#document_type').val())
+                                formData.append('posted_by_owner_or_agent', $('#posted_by_owner_or_agent').val())
+                                formData.append('monthly_or_daily', $('#monthly_or_daily').val())
+                                formData.append('city', $('#city').val())
+                                formData.append('borough', $('#borough').val())
+                                formData.append('district', $('#district').val())
+                                formData.append('size', $('#size').val())
+                                formData.append('size_sot', $('#size_sot').val())
+                                formData.append('description', $('#description').val())
+                                formData.append('price', $('#price').val())
+                                formData.append('floor', $('#floor').val())
+                                formData.append('floor_apartment', $('#floor_apartment').val())
+                                formData.append('rooms', $('#rooms').val())
+                                formData.append('address', $('#address').val())
+                                formData.append('lng', $('#lng').val())
+                                formData.append('lat', $('#lat').val())
+
+                                for (var i = 0; i < files.length; i++) {
+                                    formData.append('images' + i, files[i])
+                                }
+                                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '{% url "property_create_joint_url" %}',
+                                    data: formData,
+                                    cache: false,
+                                    processData: false,
+                                    contentType: false,
+                                    enctype: 'multipart/form-data',
+                                    success: function (data) {
+                                        if (data.user) {
+                                            var id = data.user.id
+                                            console.log(id)
+                                            location.href = "https://milliemlak.az/elanlar/" + id + "/etrafli/"
+                                        } else {
+
+                                        }
+                                    },
+                                    error: function (xhr, errmsg, err) {
+                                        console.log(xhr.status + ":" + xhr.responseText)
+                                    }
+
+
+                                })
+                            })
+                        })
+                    </script>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    
+
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+
+
+
+
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-validate-size/dist/filepond-plugin-image-validate-size.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+{% endblock %}
